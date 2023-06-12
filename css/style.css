@@ -66,6 +66,8 @@ img {
 .header {
   padding: 24px 0;
   border-bottom: 1px solid #e7e9fc;
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 .header-container {
   display: flex;
@@ -112,6 +114,7 @@ img {
 }
 .active {
   position: relative;
+  color: #404bbf;
 }
 .active::after {
   content: '';
@@ -120,7 +123,7 @@ img {
   height: 4px;
   background-color: #404bbf;
   left: 0;
-  bottom: -4px;
+  bottom: -1px;
   border-radius: 2px;
 }
 
@@ -157,13 +160,14 @@ img {
 /* main */
 /* hero */
 .hero {
-  background-image: linear-gradient(100deg, rgba(46, 47, 66, 0.7) 0%, rgba(46, 47, 66, 0.7) 100%),
+  background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
     url(../images/hero.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   padding-top: 188px;
   padding-bottom: 188px;
+  max-width: 1440px;
 }
 
 .hero-title {
@@ -261,8 +265,8 @@ img {
   display: flex;
   gap: 24px;
 }
-/* our team */
 
+/* our team */
 .our-team {
   background-color: var(--light);
   padding: 120px 0;
@@ -289,7 +293,7 @@ img {
   border-radius: 0px 0px 4px 4px;
 }
 .card-container {
-  padding: 32px 16px;
+  padding: 32px 0;
 }
 .teamcard-title {
   text-align: center;
@@ -302,6 +306,7 @@ img {
   display: flex;
   margin-top: 8px;
   gap: 24px;
+  justify-content: center;
 }
 .card-soc-item {
   display: flex;
@@ -324,6 +329,11 @@ img {
   fill: var(--light);
 }
 
+/* customers */
+.customers {
+  padding: 120px 0;
+}
+
 .customers-title {
   text-align: center;
   font-weight: 700;
@@ -338,24 +348,32 @@ img {
   display: flex;
   gap: 24px;
   margin: auto 0;
-  padding-bottom: 120px;
 }
 .customers-item {
   display: flex;
+  width: calc((100% - 120px) / 6);
+  height: 88px;
 }
-.customers-icon {
-  fill: #8e8f99;
+.customers-link {
+  width: 100%;
+  height: 100%;
   border: 1px solid #8e8f99;
   border-radius: 4px;
-  transition: fill var(--transition);
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--subtl-text);
+  transition: color var(--transition), border-color var(--transition);
 }
-.customers-icon:hover,
-.customers-icon:focus {
-  fill: var(--pressed-state);
-  border: 1px solid #404bbf;
-  border-radius: 4px;
+.customers-link:hover,
+.customers-link:focus {
+  color: var(--pressed-state);
+  border-color: var(--pressed-state);
 }
+.customers-icon {
+  fill: currentColor;
+}
+
 /* footer */
 .footer {
   background-color: var(--dark);
@@ -363,7 +381,10 @@ img {
 }
 .footer-container {
   display: flex;
-  gap: 120px;
+  align-items: baseline;
+}
+.footer-desc {
+  margin-right: 120px;
 }
 .logo-footer {
   font-family: 'Raleway', sans-serif;
@@ -408,7 +429,7 @@ img {
 .footer-soc-list {
   display: flex;
   margin-top: 8px;
-  gap: 24px;
+  gap: 16px;
 }
 .footer-soc-item {
   display: flex;
@@ -459,7 +480,7 @@ img {
   padding: 12px 24px;
   border-radius: 4px;
   transition: background-color var(--transition), color var(--transition),
-    box-shadow var(--transition);
+    box-shadow var(--transition), border-color var(--transition);
 }
 
 .filter-btn:focus,
@@ -479,10 +500,20 @@ img {
   flex-wrap: wrap;
 }
 
+.portfolio-link {
+  display: block;
+  transition: box-shadow var(--transition);
+}
+
+.portfolio-link:hover,
+.portfolio-link:focus {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
 .portfolio-card {
   max-width: calc((100% - 48px) / 3);
   background: #ffffff;
-  overflow: hidden;
 }
 .portfolio-container {
   padding: 32px 16px;
@@ -509,7 +540,7 @@ img {
   color: #f4f4fd;
   background-color: #4d5ae5;
   height: 100%;
-  padding: 40px 32px 164px;
+  padding: 40px 32px;
   position: absolute;
   top: 0;
   left: 0;
@@ -521,6 +552,7 @@ img {
   transform: translateY(0);
 }
 
+/* backdrop */
 .backdrop {
   width: 100%;
   height: 100%;
@@ -549,15 +581,29 @@ img {
   transform: translate(-50%, -50%) scale(0);
 }
 .close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #e7e9fc;
+  background-color: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   position: absolute;
   right: 24px;
   top: 24px;
+  padding: 0;
+  transition: background-color var(--transition), border var(--transition);
+}
+.close-btn:hover,
+.close-btn:focus {
+  background-color: #404bbf;
+  fill: #ffffff;
+  border: none;
+}
+.btn-icon {
+  transition: fill var(--transition);
 }
 .is-hidden {
   visibility: hidden;
