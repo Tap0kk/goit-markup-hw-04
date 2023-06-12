@@ -547,8 +547,8 @@ img {
   transform: translateY(100%);
   transition: transform var(--transition);
 }
-.portfolio-card:hover .portfolio-cover-text,
-.portfolio-card:focus .portfolio-cover-text {
+.portfolio-link:hover .portfolio-cover-text,
+.portfolio-link:focus .portfolio-cover-text {
   transform: translateY(0);
 }
 
